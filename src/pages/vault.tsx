@@ -9,10 +9,12 @@ import {
     Input,
     Flex,
     Stack,
+    Select,
     Text,
 } from "@chakra-ui/react";
 import RecievedPaymentsModal from "@/components/RecievedPaymentsModal";
 import SentPaymentsModal from "@/components/SentPaymentsModal";
+
 
 type Props = {};
 
@@ -90,6 +92,28 @@ function Vault({ }: Props) {
                                     onChange={(e) => setTimeAhead(e.target.value)}
                                 />
                             </div>
+                            <div className="mb-4">
+                                <FormLabel>Source Chain</FormLabel>
+                                {/* Dropdown with networks */}
+                                <Select placeholder="Select the chain/network">
+                                    <option value="bnb">Binance Smart Chain</option>
+                                    <option value="eth">Ethereum</option>
+                                    <option value="sol">Solana</option>
+                                    <option value="terra">Terra</option>
+                                </Select>
+                            </div>
+
+                            <div className="mb-4">
+                                <FormLabel>Destination Chain</FormLabel>
+                                {/* Dropdown with networks */}
+                                <Select placeholder="Select the chain/network">
+                                    <option value="bnb">Binance Smart Chain</option>
+                                    <option value="eth">Ethereum</option>
+                                    <option value="sol">Solana</option>
+                                    <option value="terra">Terra</option>
+                                </Select>
+                            </div>
+
                         </FormControl>
                     </Stack>
                     <Button
