@@ -1,4 +1,4 @@
-import { ESCROW_CONTRACT_ADDRESS } from "@/services/constants";
+// import { ESCROW_CONTRACT_ADDRESS } from "@/services/constants"; //
 import { useAccount } from "wagmi";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
