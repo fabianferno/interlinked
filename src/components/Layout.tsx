@@ -5,19 +5,15 @@ import Head from "next/head";
 type Props = {
   children?: React.ReactNode;
 };
-const name = "Injective Defi Escrow Service";
-export const siteTitle = "Injective Defi Escrow Service";
-
+const name = "Interlinked Defi Escrow Service";
+export const siteTitle = "Interlinked Defi Escrow Service";
 
 const Layout = (props: Props) => {
   return (
     <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
+        <meta name="description" content="Interlinked Defi Escrow Service" />
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -29,7 +25,7 @@ const Layout = (props: Props) => {
         <title>Interlinked - Transfers assets securely</title>
       </Head>
       <Navbar />
-      <div >{props.children}</div>
+      <div>{props.children}</div>
     </div>
   );
 };
