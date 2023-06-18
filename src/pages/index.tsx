@@ -14,25 +14,32 @@ function EscrowFeatures() {
       textAlign={"left"}
       align="center"
       justify="center"
-      marginTop={40}
+      marginTop={100}
       marginBottom={20}
+      height={"60vh"}
     >
       <Box my={4} mx={10}>
-        <Text fontWeight="bold">Trust and Security</Text>
+        <Text fontSize={"4xl"} fontWeight="bold">
+          Trust and Security
+        </Text>
         <Text width={"400px"}>
           An escrow smart contract reduces the risk of fraud by acting as a
           neutral party and ensuring proper escrow logic execution.
         </Text>
       </Box>
       <Box my={4} mx={10}>
-        <Text fontWeight="bold">Transparency</Text>
+        <Text fontSize={"4xl"} fontWeight="bold">
+          Transparency
+        </Text>
         <Text width={"400px"}>
           Operations happening in the system are transparent as relevant
           transactions are accessible to all blockchain participants.
         </Text>
       </Box>
       <Box my={4} mx={10}>
-        <Text fontWeight="bold">Efficiency</Text>
+        <Text fontSize={"4xl"} fontWeight="bold">
+          Efficiency
+        </Text>
         <Text width={"400px"}>
           Blockchain eliminates the need for third parties, which in turn helps
           to reduce transaction costs and enhance service efficiency.
@@ -51,7 +58,7 @@ function Home({}: Props) {
         {" "}
         <div className="flex justify-center items-center pt-20 mx-20 container">
           <div id="popup-parent" className="relative">
-            <Flex>
+            <Flex marginTop={50}>
               <Box marginTop={10} marginRight={20} textAlign={"left"}>
                 <Box className="mt-15 mb-10 text-left">
                   <h1 className="text-4xl w-[420px]">
@@ -80,7 +87,11 @@ function Home({}: Props) {
                 ) : (
                   <Box
                     borderWidth="1px"
-                    borderRadius={100}
+                    style={{
+                      borderTopLeftRadius: 100,
+                      borderBottomLeftRadius: 100,
+                    }}
+                    borderRadius={500}
                     className="font-bold p-3"
                     maxWidth={"300px"}
                     color={"white"}
@@ -92,31 +103,37 @@ function Home({}: Props) {
               </Box>
 
               <Box
-                borderWidth="1px"
+                borderWidth="2px"
                 borderRadius={20}
                 borderColor={"#34d399"}
                 height={"fit-content"}
+                borderStyle={"dashed"}
               >
-                <Image height={"60vh"} src="uml.gif" />
+                <Image height={"60vh"} rounded="3xl" src="uml.gif" />
               </Box>
             </Flex>
+
             <EscrowFeatures />
-            <Box
-              padding={10}
-              borderWidth="1px"
-              borderRadius={20}
-              borderColor={"#34d399"}
-              height={"fit-content"}
-              className="mt-24 mb-12"
-            >
-              <Stepper />
-            </Box>{" "}
-            <Box textAlign={"center"} marginBottom={100}>
-              <Text fontWeight={"bold"} fontSize={80}>
-                seamless, <span className="text-teal-400"> interlinked, </span>
-                easy
-              </Text>
-            </Box>
+
+            <Flex height={"60vh"}>
+              <Box
+                padding={20}
+                borderWidth="1px"
+                width={"100%"}
+                marginRight={40}
+                height={"fit-content"}
+                borderRadius={20}
+                borderColor={"#34d399"}
+                className="mb-12"
+              >
+                <Stepper />
+              </Box>{" "}
+              <Box textAlign={"right"}>
+                <Text fontWeight={"bold"} lineHeight={1} fontSize={60}>
+                  easy <br /> seamless <br /> interlinked
+                </Text>
+              </Box>
+            </Flex>
           </div>
         </div>
       </center>
