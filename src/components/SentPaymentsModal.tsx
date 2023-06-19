@@ -34,6 +34,7 @@ const SentPaymentsModal = (props: Props) => {
   return (
     <>
       <Button
+        borderRadius={15}
         border={"2px solid #E8816B"}
         marginRight={3}
         width={{ base: "100%", sm: "100%" }}

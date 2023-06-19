@@ -35,6 +35,7 @@ const RecievedPaymentsModal = (props: Props) => {
   return (
     <>
       <Button
+        borderRadius={15}
         border={"2px solid #34d399"}
         width={{ base: "100%", sm: "100%" }}
         onClick={onOpen}

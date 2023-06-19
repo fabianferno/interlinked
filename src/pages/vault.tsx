@@ -60,11 +60,15 @@ function Vault({}: Props) {
             borderWidth="2px"
             marginTop={30}
             p={10}
+            pt={8}
             borderRadius={20}
           >
-            <Heading mb={10} fontWeight={"normal"} size="xl">
-              Send <strong>assets</strong> to any chain
+            <Heading mb={10} textAlign={"left"} fontWeight={"normal"} size="lg">
+              Send <strong style={{ color: "#34d399" }}>assets</strong> to any
+              chain
+              <hr className="mt-5" />
             </Heading>
+
             <Stack spacing={3} mb={4}>
               <FormControl>
                 <div className="mb-4">
@@ -132,6 +136,7 @@ function Vault({}: Props) {
               color={colorMode === "dark" ? "black" : "black"}
               width={{ base: "100%" }}
               size="lg"
+              borderRadius={15}
               onClick={handleSendPayment}
             >
               Send Assets
