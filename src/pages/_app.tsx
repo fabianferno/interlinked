@@ -8,7 +8,7 @@ import {
   darkTheme,
 } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygonMumbai, goerli } from "wagmi/chains";
+import { polygonMumbai, goerli, filecoinHyperspace } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import "@/styles/globals.css";
@@ -16,7 +16,7 @@ import type { AppProps } from "next/app";
 import customTheme from "@/styles/theme";
 
 const { chains, publicClient } = configureChains(
-  [polygonMumbai, goerli],
+  [polygonMumbai, goerli, filecoinHyperspace],
   [
     alchemyProvider({
       apiKey: process.env.NEXT_PUBLIC_ALCHEMY_GOERLI_KEY,

@@ -57,8 +57,8 @@ type Props = {
 };
 
 const EscrowContextProvider = (props: Props) => {
-  const senderContractAddress ="0x54c4698a16f8adDFB3c74999AbAdEEdf888EEd88";
-  const receiverContractAddress ="0xB604Ae2e459DAEd05F0Fa43104E08AAB85287E2d"; 
+  const senderContractAddress ="0x1C0e10649b22787e500191C108a77AfAD22c4254";
+  const receiverContractAddress ="0x83322721A389BEAa9419920e38e42532C7a3A041"; 
   const [sentPayments, setSentPayments] = useState<any[]>([]);
   const [receivedPayments, setReceivedPayments] = useState<any[]>([]);
   const [status, setStatus] = useState<Status>(Status.Idle);
