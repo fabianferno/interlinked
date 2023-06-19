@@ -15,6 +15,7 @@
     "@chakra-ui/stepper": "^2.2.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@masa-finance/masa-sdk": "^3.4.10",
     "@rainbow-me/rainbowkit": "^1.0.2",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
