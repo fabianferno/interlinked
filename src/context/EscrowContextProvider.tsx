@@ -1,5 +1,15 @@
 // import { ESCROW_CONTRACT_ADDRESS } from "@/services/constants"; //
-import { useAccount } from "wagmi";
+import SenderContract_ABI from "../contracts/ERC20Sender.json";
+import ReceiverContract_ABI from "../contracts/ERC20Sender.json";
+// import {
+//   apiUrls,
+//   contractAddress,
+//   OxReceiverUNO_ABI,
+//   OxSenderUNO_ABI,
+//   tokenName,
+// } from "../contract/constants";
+import { useAccount,useContractWrite, usePrepareContractWrite,useContractRead  } from "wagmi";
+import { ethers } from "ethers";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
@@ -47,6 +57,8 @@ type Props = {
 };
 
 const EscrowContextProvider = (props: Props) => {
+  const senderContractAddress ="0x54c4698a16f8adDFB3c74999AbAdEEdf888EEd88";
+  const receiverContractAddress ="0xB604Ae2e459DAEd05F0Fa43104E08AAB85287E2d"; 
   const [sentPayments, setSentPayments] = useState<any[]>([]);
   const [receivedPayments, setReceivedPayments] = useState<any[]>([]);
   const [status, setStatus] = useState<Status>(Status.Idle);
@@ -60,12 +72,13 @@ const EscrowContextProvider = (props: Props) => {
 
   async function fetchSentPayments() {
     try {
-      // get_sent_payments: {
-      //     sender: address,
-      //   },
-      // TODO: Call contract
-      const response: any = [];
-
+      const { data, isError, isLoading } = useContractRead({
+        address: senderContractAddress,
+        abi: SenderContract_ABI,
+        functionName: 'getSentPayments',
+      })
+      
+      const response: any = data;
       setSentPayments(response);
     } catch (e) {
       alert((e as any).message);
@@ -78,8 +91,13 @@ const EscrowContextProvider = (props: Props) => {
       //     receiver: injectiveAddress,
       //   },
       // TODO: Call contract
-      const response: any = [];
 
+      const { data, isError, isLoading } = useContractRead({
+        address: senderContractAddress,
+        abi: SenderContract_ABI,
+        functionName: 'getReceivedPayments',
+      })
+      const response: any = data;
       setReceivedPayments(response);
     } catch (e) {
       alert((e as any).message);
@@ -109,6 +127,21 @@ const EscrowContextProvider = (props: Props) => {
       //     amount: amount,
       //   },
       // TODO: Call contract
+
+      const { config } = usePrepareContractWrite({
+        address: senderContractAddress,
+        abi: SenderContract_ABI,
+        functionName: 'sendPayment',
+        args:[
+          receiver,
+          "0x2c852e740B62308c46DD29B982FBb650D063Bd07",//addres of erc20 token aUSDC on ploygon
+          amount,
+          parseInt(time_ahead, 10)
+        ]
+      })
+
+      const { data, isLoading, isSuccess, write } = useContractWrite(config)
+
       fetchSentPayments();
       fetchReceivedPayments();
     } catch (e) {
@@ -132,6 +165,17 @@ const EscrowContextProvider = (props: Props) => {
       //     payment_id: parseInt(payment_id, 10),
       //   },
       // TODO: Call contract
+
+      const { config } = usePrepareContractWrite({
+        address: senderContractAddress,
+        abi: SenderContract_ABI,
+        functionName: 'revertPayment',
+        args:[
+          payment_id
+        ]
+      })
+
+      const { data, isLoading, isSuccess, write } = useContractWrite(config)
       fetchSentPayments();
       fetchReceivedPayments();
     } catch (e) {
@@ -154,6 +198,21 @@ const EscrowContextProvider = (props: Props) => {
       //     payment_id: parseInt(payment_id, 10),
       //   },
       // TODO: Call contract
+
+      const { config } = usePrepareContractWrite({
+        address: senderContractAddress,
+        abi: SenderContract_ABI,
+        functionName: 'claimPayment',
+        args:[
+          payment_id,
+          "ethereum-2",//destChain
+          "Polygon",//srcChain
+          "aUSDC",//symbol
+        ]
+      })
+
+      const { data, isLoading, isSuccess, write } = useContractWrite(config)
+      
       fetchSentPayments();
       fetchReceivedPayments();
     } catch (e) {
