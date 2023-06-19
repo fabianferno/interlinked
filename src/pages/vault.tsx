@@ -13,6 +13,7 @@ import {
   Select,
   Text,
 } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import RecievedPaymentsModal from "@/components/RecievedPaymentsModal";
 import SentPaymentsModal from "@/components/SentPaymentsModal";
 import { useNetwork } from "wagmi";
@@ -21,6 +22,7 @@ type Props = {};
 
 function Vault({}: Props) {
   const { chain, chains } = useNetwork();
+  const { colorMode } = useColorMode();
 
   const [recievingAddress, setRecievingAddress] = useState("");
   const [amount, setAmount] = useState("");
@@ -51,12 +53,18 @@ function Vault({}: Props) {
 
   return (
     <NoSSR>
-      <div className="flex justify-center">
-        <Box textAlign="center" p={4} minW={"450px"} maxW="500px" mx="auto">
-          <Heading fontWeight={"normal"} size="lg">
-            Send <strong>assets</strong> on any chain
-          </Heading>
-          <Box marginTop={30} borderWidth={1} p={4} rounded="md">
+      <div className="flex justify-center mt-14">
+        <Box textAlign="center" minW={"500px"} maxW="500px" mx="auto">
+          <Box
+            boxShadow="0 0 1000px 1px #34d399"
+            borderWidth="2px"
+            marginTop={30}
+            p={10}
+            borderRadius={20}
+          >
+            <Heading mb={10} fontWeight={"normal"} size="xl">
+              Send <strong>assets</strong> to any chain
+            </Heading>
             <Stack spacing={3} mb={4}>
               <FormControl>
                 <div className="mb-4">
@@ -67,64 +75,61 @@ function Vault({}: Props) {
                     value={recievingAddress}
                     onChange={(e) => setRecievingAddress(e.target.value)}
                   />
-                </div>
-                <div className="mb-4">
-                  <FormLabel>Amount to be sent</FormLabel>
-                  <Input
-                    type="number"
-                    placeholder="100"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                  />
-                </div>
-                <div className="mb-4">
-                  <FormLabel>Currency</FormLabel>
-                  <Input
-                    type="text"
-                    placeholder="eth"
-                    value={denom}
-                    isDisabled={true}
-                    onChange={(e) => setUnit(e.target.value)}
-                  />
-                </div>
-                {/* <div className="mb-4">
-                <FormLabel>Time ahead in secs</FormLabel>
-                <Input
-                  type="number"
-                  placeholder="100000"
-                  value={timeAhead}
-                  onChange={(e) => setTimeAhead(e.target.value)}
-                />
-              </div> */}
-                <div className="mb-4">
-                  <FormLabel>Source Chain</FormLabel>
-                  {/* Dropdown with networks */}
-                  <Input
-                    isDisabled={true}
-                    value={chain ? chain.name : "Loading..."}
-                  />
-                </div>
+                </div>{" "}
+                <Flex align="center" justify="space-between">
+                  <div className="mb-4 mr-2">
+                    <FormLabel>Amount to be sent</FormLabel>
+                    <Input
+                      type="number"
+                      placeholder="100"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <FormLabel>Currency</FormLabel>
+                    <Input
+                      type="text"
+                      placeholder="eth"
+                      value={denom}
+                      isDisabled={true}
+                      onChange={(e) => setUnit(e.target.value)}
+                    />
+                  </div>
+                </Flex>
+                <Flex align="center" justify="space-between">
+                  <div className="mb-4 mr-3">
+                    <FormLabel>Source Chain</FormLabel>
+                    {/* Dropdown with networks */}
+                    <Input
+                      isDisabled={true}
+                      value={chain ? chain.name : "Loading..."}
+                    />
+                  </div>
 
-                <div className="mb-4">
-                  <FormLabel>Destination Chain</FormLabel>
-                  {/* Dropdown with networks */}
-                  <Select placeholder="Select the chain/network">
-                    {/* <option value="bnb">Binance Smart Chain</option>
+                  <div className="mb-4">
+                    <FormLabel>Destination Chain</FormLabel>
+                    {/* Dropdown with networks */}
+                    <Select placeholder="Select the chain/network">
+                      {/* <option value="bnb">Binance Smart Chain</option>
                   <option value="eth">Ethereum</option>
                   <option value="sol">Solana</option>
                   <option value="terra">Terra</option> */}
-                    {chains ? (
-                      chains.map((chain) => (
-                        <option value={chain.name}>{chain.name}</option>
-                      ))
-                    ) : (
-                      <option value="null">Loading Chains...</option>
-                    )}
-                  </Select>
-                </div>
+                      {chains ? (
+                        chains.map((chain) => (
+                          <option value={chain.name}>{chain.name}</option>
+                        ))
+                      ) : (
+                        <option value="null">Loading Chains...</option>
+                      )}
+                    </Select>
+                  </div>
+                </Flex>
               </FormControl>
             </Stack>
             <Button
+              bg={"#34d399"}
+              color={colorMode === "dark" ? "black" : "black"}
               width={{ base: "100%" }}
               size="lg"
               onClick={handleSendPayment}
@@ -145,7 +150,7 @@ function Vault({}: Props) {
             </Flex>
           </Box>
 
-          <Text mt={4}>
+          <Text my={4}>
             Transaction Status: {isLoading ? "Loading..." : "Ready"}
           </Text>
         </Box>

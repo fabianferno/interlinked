@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar1";
+import Navbar from "./NavBar";
 import Head from "next/head";
 
 type Props = {

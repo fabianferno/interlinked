@@ -162,9 +162,9 @@ function Home({}: Props) {
                 width={"100%"}
                 marginRight={40}
                 height={"fit-content"}
+                className="mb-12"
                 borderRadius={20}
                 borderColor={"#34d399"}
-                className="mb-12"
                 boxShadow="0 0 1000px 1px #34d399"
                 borderWidth="2px"
                 borderStyle={"dashed"}

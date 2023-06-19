@@ -35,7 +35,7 @@ const RecievedPaymentsModal = (props: Props) => {
   return (
     <>
       <Button
-        bg={"#0d9488"}
+        border={"2px solid #34d399"}
         width={{ base: "100%", sm: "100%" }}
         onClick={onOpen}
       >
