@@ -13,13 +13,21 @@ function EscrowFeatures() {
     <Flex
       textAlign={"left"}
       align="center"
-      justify="center"
+      justify="between"
       marginTop={100}
       marginBottom={20}
       height={"60vh"}
     >
-      <Box my={4} mx={10}>
-        <Text fontSize={"4xl"} fontWeight="bold">
+      <Box
+        borderWidth="2px"
+        borderRadius={20}
+        m={5}
+        borderColor={"#34d399"}
+        borderLeft={"1px"}
+        p={10}
+        pb={12}
+      >
+        <Text fontSize={"3xl"} fontWeight="bold">
           Trust and Security
         </Text>
         <Text width={"400px"}>
@@ -27,8 +35,16 @@ function EscrowFeatures() {
           neutral party and ensuring proper escrow logic execution.
         </Text>
       </Box>
-      <Box my={4} mx={10}>
-        <Text fontSize={"4xl"} fontWeight="bold">
+      <Box
+        borderWidth="2px"
+        borderRadius={20}
+        borderColor={"#34d399"}
+        borderLeft={"1px"}
+        p={10}
+        m={5}
+        pb={12}
+      >
+        <Text fontSize={"3xl"} fontWeight="bold">
           Transparency
         </Text>
         <Text width={"400px"}>
@@ -36,8 +52,16 @@ function EscrowFeatures() {
           transactions are accessible to all blockchain participants.
         </Text>
       </Box>
-      <Box my={4} mx={10}>
-        <Text fontSize={"4xl"} fontWeight="bold">
+      <Box
+        borderWidth="2px"
+        borderRadius={20}
+        borderColor={"#34d399"}
+        borderLeft={"1px"}
+        p={10}
+        pb={12}
+        m={5}
+      >
+        <Text fontSize={"3xl"} fontWeight="bold">
           Efficiency
         </Text>
         <Text width={"400px"}>
@@ -58,11 +82,11 @@ function Home({}: Props) {
         {" "}
         <div className="flex justify-center items-center pt-20 mx-20 container">
           <div id="popup-parent" className="relative">
-            <Flex marginTop={50}>
-              <Box marginTop={10} marginRight={20} textAlign={"left"}>
+            <Flex align={"centers"} marginTop={50} justify={"space-between"}>
+              <Box marginTop={10} textAlign={"left"}>
                 <Box className="mt-15 mb-10 text-left">
-                  <h1 className="text-4xl w-[420px]">
-                    Interlinked helps you transfer your assets on
+                  <h1 className="text-4xl w-[300px]">
+                    Transfer your assets on
                     <span className="font-bold italic text-green-400">
                       {" "}
                       any chain
@@ -79,6 +103,7 @@ function Home({}: Props) {
                       borderTopLeftRadius: 100,
                       borderBottomLeftRadius: 100,
                     }}
+                    border={"1px solid #34d399"}
                     borderRadius={500}
                     size="lg"
                   >
@@ -103,33 +128,52 @@ function Home({}: Props) {
               </Box>
 
               <Box
+                marginRight={10}
+                boxShadow="0 0 1000px 1px #34d399"
                 borderWidth="2px"
                 borderRadius={20}
                 borderColor={"#34d399"}
-                height={"fit-content"}
+                height={"450px"}
                 borderStyle={"dashed"}
+                overflow={"hidden"}
               >
-                <Image height={"60vh"} rounded="3xl" src="uml.gif" />
+                <Image
+                  style={{
+                    height: "60vh",
+                    marginTop: "-50px",
+                  }}
+                  rounded="3xl"
+                  src="uml.gif"
+                />
               </Box>
             </Flex>
 
             <EscrowFeatures />
 
-            <Flex height={"60vh"}>
+            <Flex
+              height={"60vh"}
+              justify={"center"}
+              align={"center"}
+              mx={10}
+              mr={18}
+            >
               <Box
                 padding={20}
-                borderWidth="1px"
                 width={"100%"}
                 marginRight={40}
                 height={"fit-content"}
                 borderRadius={20}
                 borderColor={"#34d399"}
                 className="mb-12"
+                boxShadow="0 0 1000px 1px #34d399"
+                borderWidth="2px"
+                borderStyle={"dashed"}
+                overflow={"hidden"}
               >
                 <Stepper />
               </Box>{" "}
               <Box textAlign={"right"}>
-                <Text fontWeight={"bold"} lineHeight={1} fontSize={60}>
+                <Text mb={20} fontWeight={"bold"} lineHeight={1} fontSize={60}>
                   easy <br /> seamless <br /> interlinked
                 </Text>
               </Box>
