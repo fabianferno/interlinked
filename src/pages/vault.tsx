@@ -14,6 +14,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import RecievedPaymentsModal from "@/components/RecievedPaymentsModal";
 import SentPaymentsModal from "@/components/SentPaymentsModal";
 import { useNetwork } from "wagmi";
@@ -53,14 +54,17 @@ function Vault({}: Props) {
 
   return (
     <NoSSR>
-      <div className="flex justify-center mt-14">
+      <div className="flex justify-center mt-4">
         <Box textAlign="center" minW={"500px"} maxW="500px" mx="auto">
           <Box
-            boxShadow="0 0 1000px 1px #34d399"
+            boxShadow="0px 0px 50px 1px #34d399 inset"
             borderWidth="2px"
+            border={
+              colorMode === "dark" ? "2px solid #34d399" : "2px solid #222222"
+            }
             marginTop={30}
-            p={10}
-            pt={8}
+            p={20}
+            pt={16}
             borderRadius={20}
           >
             <Heading mb={10} textAlign={"left"} fontWeight={"normal"} size="lg">
@@ -132,14 +136,19 @@ function Vault({}: Props) {
               </FormControl>
             </Stack>
             <Button
-              bg={"#34d399"}
-              color={colorMode === "dark" ? "black" : "black"}
+              boxShadow="0px 0px 10px 1px #34d399 inset"
+              borderWidth="2px"
+              border={
+                colorMode === "dark" ? "2px solid #34d399" : "2px solid #222222"
+              }
+              color={"light"}
               width={{ base: "100%" }}
               size="lg"
               borderRadius={15}
               onClick={handleSendPayment}
             >
               Send Assets
+              <ArrowForwardIcon ml={2} />
             </Button>
             <Flex marginTop={3} justifyContent={"space-between"}>
               <SentPaymentsModal

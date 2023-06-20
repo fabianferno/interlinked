@@ -8,7 +8,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <div className="mx-4 my-2">
+    <div className="px-4 py-2">
       <div className="container mx-auto flex justify-between items-center p-2">
         <Link
           href="/"
