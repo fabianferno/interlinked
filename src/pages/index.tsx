@@ -3,8 +3,10 @@ import { Button, Box, Flex, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useAccount } from "wagmi";
 import NoSSR from "@/components/NoSSR";
+import { useColorMode } from "@chakra-ui/react";
 
 import Stepper from "../components/Stepper";
+import { color } from "framer-motion";
 
 type Props = {};
 
@@ -75,6 +77,7 @@ function EscrowFeatures() {
 
 function Home({}: Props) {
   const { address } = useAccount();
+  const { colorMode } = useColorMode();
 
   return (
     <NoSSR>
@@ -119,7 +122,7 @@ function Home({}: Props) {
                     borderRadius={500}
                     className="font-bold p-3"
                     maxWidth={"300px"}
-                    color={"white"}
+                    color={colorMode === "light" ? "black" : "white"}
                     borderColor={"#34d399"}
                   >
                     Connect Wallet to get started
@@ -141,6 +144,9 @@ function Home({}: Props) {
                   style={{
                     height: "60vh",
                     marginTop: "-50px",
+                    ...(colorMode === "light" && {
+                      filter: "invert(1) hue-rotate(-190deg)",
+                    }),
                   }}
                   rounded="3xl"
                   src="uml.gif"
